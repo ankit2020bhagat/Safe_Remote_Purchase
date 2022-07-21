@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.9;
-contract Main{
+contract Remote_Purchase{
      address payable public seller;
      address payable public buyer;
      uint public value;
