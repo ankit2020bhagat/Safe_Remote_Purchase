@@ -51,26 +51,26 @@ contract Remote_Purchase{
         }
         state=State.Locked;
      }
-     function getBalanceof() public view returns(uint)  {
+     function Contract_Balance() public view returns(uint)  {
         return address(this).balance;
      }
-     function BalanceofSeller() public view returns(uint){
-        return seller.balance;
-     }
-     function Balanceofbuyer() public view returns(uint){
-        return buyer.balance;
-     }
+   //   function BalanceofSeller() public view returns(uint){
+   //      return seller.balance;
+   //   }
+   //   function Balanceofbuyer() public view returns(uint){
+   //      return buyer.balance;
+   //   }
     function confirmRecieved() external  OnlyBuyer inState(State.Locked){
         state=State.Release;
         buyer.transfer(value);
     }
     function paySeller() external OnlySeller inState(State.Release){
         state=State.Inactive;
-        seller.transfer(getBalanceof());
+        seller.transfer(Contract_Balance());
     }
     function abort() external OnlySeller inState(State.Created){
     state=State.Inactive;
-    seller.transfer(getBalanceof());
+    seller.transfer(Contract_Balance());
     }
   
 
